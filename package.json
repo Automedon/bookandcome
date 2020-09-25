@@ -19,6 +19,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage": "https://automedon.github.io/Currency-Converter/",
   "browserslist": {
     "production": [
       ">0.2%",
