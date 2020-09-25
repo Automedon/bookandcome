@@ -5,9 +5,35 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1 {
+  margin:0;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  border: 1px solid #333;
+  border-radius:0.3rem;
+  width:7em;
+  padding:0.25rem;
+}
+
+select {
+  margin-left: 0.5rem;
+}
+
+.equals {
+  font-weight: bold;
+  font-size: 2rem;
 }
