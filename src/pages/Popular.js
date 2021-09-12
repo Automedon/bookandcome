@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import FoodCard from "../components/FoodCard";
-import { Button } from "antd";
+import { Button, Spin } from "antd";
 import { fetchProducts } from "../api";
 import Header from "../components/Header";
 import { useRecoilValue } from "recoil";
@@ -9,12 +9,14 @@ import { foodCardsAtom } from "../atoms/atom";
 import { hasPositiveValue } from "../utils/utils";
 
 const Popular = () => {
-  const { data, isLoading } = useQuery("products", fetchProducts, {
-    keepPreviousData: true,
-    staleTime: Infinity,
-  });
+  const { data, isLoading } = useQuery(["products"], fetchProducts);
   const state = useRecoilValue(foodCardsAtom);
-  if (isLoading) return <div>Loading..</div>;
+  if (isLoading)
+    return (
+      <Spin tip="Fetching Products">
+        <div>Loading..</div>
+      </Spin>
+    );
 
   return (
     <div

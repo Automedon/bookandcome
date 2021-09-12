@@ -6,7 +6,12 @@ import { RecoilRoot } from "recoil";
 import "./index.css";
 import App from "./App";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    keepPreviousData: true,
+    staleTime: Number.MAX_SAFE_INTEGER,
+  },
+});
 
 ReactDOM.render(
   <RecoilRoot>

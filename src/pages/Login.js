@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useMutation } from "react-query";
+import { Spin } from "antd";
 import { fetchToken } from "../api";
 import { checkLogin } from "../utils/utils";
 
@@ -17,9 +18,20 @@ const Login = () => {
   return (
     <div>
       <div>
-        <button disabled={isLoading} onClick={mutate}>
-          Login
-        </button>
+        {isLoading && (
+          <Spin tip="Loading...">
+            <button disabled={isLoading} onClick={mutate}>
+              Login
+            </button>
+          </Spin>
+        )}
+
+        {!isLoading && (
+          <button disabled={isLoading} onClick={mutate}>
+            Login
+          </button>
+        )}
+
         {isError && <div>Request failed</div>}
       </div>
     </div>

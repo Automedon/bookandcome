@@ -84,7 +84,7 @@ const Basket = ({ food }) => {
                   justify="start"
                 >
                   <Col span={24}>
-                    <Text bold>{capitalize(name)}</Text>
+                    <Text>{capitalize(name)}</Text>
                   </Col>
                   <Col span={24}>
                     <Text>{formatterMoney.format(price)} per pcs.</Text>
@@ -156,7 +156,7 @@ const Basket = ({ food }) => {
                 </div>
                 {!state[name] && (
                   <Button onClick={() => handleAdd(name)}>
-                    <Text>{formatterMoney.format(price)}</Text>
+                    <Text>Take it {formatterMoney.format(price)}</Text>
                   </Button>
                 )}
                 {!!state[name] && <Text>{state[name]}</Text>}
