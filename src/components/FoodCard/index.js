@@ -34,7 +34,7 @@ const FoodCard = ({ food }) => {
     }
   }, [setState, state, results]);
   return (
-    <Row gutter={[8, 8]} type="flex">
+    <Row gutter={[8, 8]} type="flex" style={{ paddingBottom: 25 }}>
       {results.map(({ masterData: { current }, id }) => {
         const name = current.name[`en-US`];
         const srcImg = current.masterVariant.images[0].url;

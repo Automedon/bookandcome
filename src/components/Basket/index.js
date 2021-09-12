@@ -126,7 +126,14 @@ const Basket = ({ food }) => {
           );
         }}
       />
-      <Carousel autoplay dotPosition="top">
+      <h3>Add to my order</h3>
+      <Carousel
+        autoplay
+        dotPosition="top"
+        style={{
+          paddingBottom: 20,
+        }}
+      >
         {results.map(({ masterData: { current }, id }) => {
           const name = current.name[`en-US`];
           const srcImg = current.masterVariant.images[0].url;
@@ -183,7 +190,7 @@ const Basket = ({ food }) => {
             width: "300px",
           }}
         >
-          <Button danger href="/complete" block shape={"round"}>
+          <Button danger href="/checkout" block shape={"round"}>
             Checkout | {formatterMoney.format(sumAll)}
           </Button>
         </div>

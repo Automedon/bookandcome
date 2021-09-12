@@ -23,7 +23,7 @@ function App() {
           </ProtectedRoute>
         )}
       />
-      <Route exact path={"/complete"} render={() => <Complete />} />
+      <Route exact path={"/checkout"} render={() => <Complete />} />
       <Route
         exact
         path={"/basket"}
