@@ -1,11 +1,14 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { checkLogin } from "../utils/utils";
 
-export default ({ children, logged }) => {
-  const history = useHistory();
+const ProtectedRoute = ({ children }) => {
+  const logged = checkLogin();
   if (!logged) {
-    return history.push("/login");
+    return <Redirect to="login" />;
   }
 
   return <div>{children}</div>;
 };
+
+export default ProtectedRoute;

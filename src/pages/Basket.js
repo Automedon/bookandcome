@@ -1,14 +1,16 @@
 import React from "react";
-import { useQuery } from "react-query";
-import FoodCard from "../components/FoodCard";
-import { Button } from "antd";
-import { fetchProducts } from "../api";
-import Header from "../components/Header";
 import { useRecoilValue } from "recoil";
+import { Button, Typography } from "antd";
+import Header from "../components/Header";
+import Basket from "../components/Basket";
 import { foodCardsAtom } from "../atoms/atom";
 import { hasPositiveValue } from "../utils/utils";
+import { useQuery } from "react-query";
+import { fetchProducts } from "../api";
 
-const Popular = () => {
+const { Text } = Typography;
+
+const BasketPage = () => {
   const { data, isLoading } = useQuery("products", fetchProducts, {
     keepPreviousData: true,
     staleTime: Infinity,
@@ -25,7 +27,22 @@ const Popular = () => {
       }}
     >
       <Header />
-      <FoodCard food={data} />
+      <div
+        style={{
+          textAlign: "left",
+        }}
+      >
+        <Text
+          style={{
+            color: "gray",
+            fontWeight: 700,
+          }}
+        >
+          Basket
+        </Text>
+      </div>
+
+      <Basket food={data} />
       {hasPositiveValue(state) && (
         <div
           style={{
@@ -34,8 +51,8 @@ const Popular = () => {
             width: "300px",
           }}
         >
-          <Button danger href="/basket" block shape={"round"}>
-            Complete Order
+          <Button danger href="/complete" block shape={"round"}>
+            Checkout
           </Button>
         </div>
       )}
@@ -43,4 +60,4 @@ const Popular = () => {
   );
 };
 
-export default Popular;
+export default BasketPage;

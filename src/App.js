@@ -1,15 +1,39 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import "./App.css";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { checkLogin } from "./utils/utils";
 import Login from "./pages/Login";
 import Popular from "./pages/Popular";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Complete from "./pages/Complete";
+import Basket from "./pages/Basket";
 
 function App() {
   const logged = checkLogin();
   return (
     <Switch>
-      <Route exact path={"/login"} render={() => <Login logged={logged} />} />
-      <Route exact path={"/popular"} render={() => <Popular />} />
+      <Route exact path={"/login"} render={() => <Login />} />
+
+      <Route
+        exact
+        path={"/popular"}
+        render={() => (
+          <ProtectedRoute>
+            <Popular />
+          </ProtectedRoute>
+        )}
+      />
+      <Route exact path={"/complete"} render={() => <Complete />} />
+      <Route
+        exact
+        path={"/basket"}
+        render={() => (
+          <ProtectedRoute>
+            <Basket />
+          </ProtectedRoute>
+        )}
+      />
+      {!logged ? <Redirect push to="/login" /> : <Redirect to="/popular" />}
     </Switch>
   );
 }

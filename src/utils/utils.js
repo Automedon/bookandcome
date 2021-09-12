@@ -5,3 +5,18 @@ export const checkLogin = () => {
   }
   return false;
 };
+
+export const formatterMoney = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  maximumFractionDigits: 0,
+});
+
+export const capitalize = (str) =>
+  str
+    .split(" ")
+    .map((v) => v.slice(0, 1).toUpperCase() + v.slice(1).toLowerCase())
+    .join(" ");
+
+export const hasPositiveValue = (state) =>
+  Object.values(state).some((v) => !!v);

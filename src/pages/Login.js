@@ -1,21 +1,29 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { useMutation } from "react-query";
 import { fetchToken } from "../api";
+import { checkLogin } from "../utils/utils";
 
-export default ({ logged }) => {
+const Login = () => {
   const history = useHistory();
+  const { mutate, isLoading, isError } = useMutation(`login`, fetchToken);
   useEffect(() => {
-    console.log(logged);
+    const logged = checkLogin();
     if (logged) {
       return history.push("/popular");
     }
-  }, [logged, history]);
+  }, [history, isLoading]);
 
   return (
     <div>
       <div>
-        <button onClick={fetchToken}>Login</button>
+        <button disabled={isLoading} onClick={mutate}>
+          Login
+        </button>
+        {isError && <div>Request failed</div>}
       </div>
     </div>
   );
 };
+
+export default Login;
