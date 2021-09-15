@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import Cards from "react-credit-cards";
 import { useForm, Controller } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import "react-credit-cards/es/styles-compiled.css";
 import { Typography, Radio, Input, TimePicker, DatePicker, Button } from "antd";
 import Header from "../components/Header";
 const { Text } = Typography;
 
 const Complete = () => {
+  const history = useHistory();
   const [{ focus }, setState] = useState({ focus: "" });
   const { control, handleSubmit, watch, formState } = useForm({
     defaultValues: {
@@ -21,8 +23,8 @@ const Complete = () => {
     setState({ focus: e.target.name });
   };
 
-  const submit = (data) => {
-    alert(JSON.stringify(data, null, 2));
+  const submit = () => {
+    history.push("/success");
   };
 
   return (

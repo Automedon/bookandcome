@@ -7,6 +7,7 @@ import Popular from "./pages/Popular";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Complete from "./pages/Complete";
 import Basket from "./pages/Basket";
+import Success from "./pages/Success";
 
 function App() {
   const logged = checkLogin();
@@ -24,6 +25,7 @@ function App() {
         )}
       />
       <Route exact path={"/checkout"} render={() => <Complete />} />
+      <Route exact path={"/success"} render={() => <Success />} />
       <Route
         exact
         path={"/basket"}
