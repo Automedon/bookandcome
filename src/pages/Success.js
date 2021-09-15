@@ -46,7 +46,7 @@ const Success = () => {
       </div>
       <div
         style={{
-          marginTop: 100,
+          marginTop: 75,
           fontWeight: 700,
           fontSize: 24,
         }}
