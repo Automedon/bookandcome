@@ -1,10 +1,9 @@
 export const checkLogin = () => {
-  // const token = localStorage.getItem("token");
-  // if (token) {
-  //   return JSON.parse(token).expiredDate >= new Date().getTime();
-  // }
-  // return false;
-  return true
+  const token = localStorage.getItem("token");
+  if (token) {
+    return JSON.parse(token).expiredDate >= new Date().getTime();
+  }
+  return false;
 };
 
 export const formatterMoney = new Intl.NumberFormat("en-US", {

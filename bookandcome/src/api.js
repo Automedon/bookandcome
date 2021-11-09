@@ -1,5 +1,4 @@
 import axios from "axios";
-import {fakeData}  from './fakeData'
 
 export const fetchToken = async () => {
   //const data = await axios.get('/api/token')
@@ -28,5 +27,15 @@ export const fetchToken = async () => {
 };
 
 export const fetchProducts = async () => {
-  return fakeData;
+  const { data } = await axios.get(
+    `https://api.australia-southeast1.gcp.commercetools.com/book-and-come/products`,
+    {
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("token")).access_token
+        }`,
+      },
+    }
+  );
+  return data;
 };
